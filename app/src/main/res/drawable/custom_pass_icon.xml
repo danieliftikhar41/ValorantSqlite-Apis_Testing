@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- when we do focus/dont focus on input it will use diferent icon with diferent color-->
+
+    <item android:state_focused="true"
+        android:drawable="@drawable/ic_pass_focused" />
+
+    <item android:state_focused="false"
+        android:drawable="@drawable/ic_pass" />
+</selector>
