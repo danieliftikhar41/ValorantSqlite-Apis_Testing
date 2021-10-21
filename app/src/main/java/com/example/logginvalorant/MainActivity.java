@@ -37,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(Redrict);
 
                     Log.i("Login","you are inside");
-                }else{
-
                 }
             }}
 
