@@ -20,7 +20,7 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.fragment_map, container, false);
-        ArrayList<String> array_noms = new ArrayList<String>();
+        /*ArrayList<String> array_noms = new ArrayList<String>();
 
         array_noms.add("Map1");
         array_noms.add("Map2");
@@ -34,7 +34,7 @@ public class MapFragment extends Fragment {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(array_noms);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));*/
         return view;
 
     }

@@ -2,6 +2,7 @@ package com.example.logginvalorant.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -50,6 +51,23 @@ public class ValorantDBHelper extends SQLiteOpenHelper {
             db.delete(WeaponEntry.TABLE_NAME, "id=?", new String[]{Integer.toString(i)});
         }else{
             Log.i("sql","Database is closed");
+        }
+
+    }
+    public void selectData(SQLiteDatabase db){
+        Cursor c = db.rawQuery("SELECT id,name,Text FROM  "+WeaponEntry.TABLE_NAME,null);
+        if (c.moveToFirst()){
+            do {
+                // Passing values
+                String column1 = c.getString(0);
+                String column2 = c.getString(1);
+                String column3 = c.getString(2);
+
+
+                // Do something Here with values
+                Log.i("sqlog", "Id: "+column1+" Nom: "+column2+" Details "+column3);
+            } while(c.moveToNext());
+            c.close();
         }
 
     }

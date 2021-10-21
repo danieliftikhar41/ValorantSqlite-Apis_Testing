@@ -25,7 +25,7 @@ public class AgentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_agent, container, false);
         ArrayList<String> array_noms = new ArrayList<String>();
-
+/*
 
         array_noms.add("item1");
         array_noms.add("item2");
@@ -55,7 +55,7 @@ public class AgentFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(array_noms);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));*/
        /*
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.HORIZONTAL));

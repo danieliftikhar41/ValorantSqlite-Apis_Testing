@@ -44,7 +44,8 @@ public class AddFragment extends Fragment {
                 String Details = Des.getText().toString();
                 Weapon c =new Weapon(Name,Details);
                 dbHelper.insertContact(db, c);
-
+                edtText.setText("");
+                Des.setText("");
 
             }    });
         return view;
