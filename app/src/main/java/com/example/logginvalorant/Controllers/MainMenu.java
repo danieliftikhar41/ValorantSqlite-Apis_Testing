@@ -1,9 +1,11 @@
-package com.example.logginvalorant;
+package com.example.logginvalorant.Controllers;
 
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.logginvalorant.R;
 
 public class MainMenu extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.logginvalorant;
+package com.example.logginvalorant.Controllers;
 
 import android.content.Intent;
 import android.os.SystemClock;
@@ -8,7 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import com.example.logginvalorant.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
 
         /*we use Intent to redricte to another page */
-        Intent Redrict= new Intent(this,MainMenu.class);
+        Intent Redrict= new Intent(this, MainMenu.class);
         btn.setOnClickListener(new View.OnClickListener() {
             /* we add an event on click ,it will work only when we click on botton */
             @Override
