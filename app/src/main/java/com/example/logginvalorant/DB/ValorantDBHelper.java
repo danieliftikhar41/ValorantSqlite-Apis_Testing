@@ -10,6 +10,8 @@ import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.DB.ValorantContract.*;
 import com.example.logginvalorant.Moduls.Weapon;
 
+import java.util.ArrayList;
+
 public class ValorantDBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "valorant.db";
@@ -54,7 +56,7 @@ public class ValorantDBHelper extends SQLiteOpenHelper {
         }
 
     }
-    public void selectData(SQLiteDatabase db){
+    public void selectData(SQLiteDatabase db, ArrayList<Weapon> arrayWeapon){
         Cursor c = db.rawQuery("SELECT id,name,Text FROM  "+WeaponEntry.TABLE_NAME,null);
         if (c.moveToFirst()){
             do {
@@ -62,14 +64,25 @@ public class ValorantDBHelper extends SQLiteOpenHelper {
                 String column1 = c.getString(0);
                 String column2 = c.getString(1);
                 String column3 = c.getString(2);
-
+                arrayWeapon.add(new Weapon(column2,column3));
 
                 // Do something Here with values
-                Log.i("sqlog", "Id: "+column1+" Nom: "+column2+" Details "+column3);
+
             } while(c.moveToNext());
             c.close();
         }
 
     }
+    public void DeleteTable(SQLiteDatabase db) {
+        //Check the bd is open
+        if (db.isOpen()){
+
+            db.execSQL("delete  from " + WeaponEntry.TABLE_NAME);
+        }else{
+            Log.i("sql","Database is closed");
+        }
+
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.logginvalorant.Controllers;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
@@ -9,11 +10,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.logginvalorant.DB.ValorantDBHelper;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
 
 public class MapFragment extends Fragment {
+    private ValorantDBHelper dbHelper;
+    private SQLiteDatabase db;
+    public MapFragment(ValorantDBHelper dbHelper, SQLiteDatabase db) {
+        this.dbHelper=dbHelper;
+        this.db=db;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

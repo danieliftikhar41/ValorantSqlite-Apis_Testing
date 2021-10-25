@@ -22,21 +22,21 @@ public class MainMenu extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgentFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgentFragment(dbHelper, db)).commit();
         bottomNav.setOnNavigationItemSelectedListener(item -> {
                     Fragment selectedFragment = null;
                     switch (item.getItemId()) {
                         case R.id.nav_agent:
-                            selectedFragment = new AgentFragment();
+                            selectedFragment = new AgentFragment(dbHelper, db);
                             break;
                         case R.id.nav_map:
-                            selectedFragment = new MapFragment();
+                            selectedFragment = new MapFragment(dbHelper, db);
                             break;
                         case R.id.nav_weapon:
                             selectedFragment = new WeaponFragment(dbHelper, db);
                             break;
                         case R.id.nav_add:
-                            selectedFragment = new AddFragment();
+                            selectedFragment = new AddFragment(dbHelper, db);
                             break;
                     }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

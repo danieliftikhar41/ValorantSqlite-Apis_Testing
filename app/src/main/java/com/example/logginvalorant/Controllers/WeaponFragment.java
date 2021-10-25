@@ -36,14 +36,13 @@ public class WeaponFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_weapon, container, false);
-        dbHelper.selectData(db);
-       /* ArrayList<Weapon> arrayWeapon = new ArrayList<>();
-
+        ArrayList<Weapon> arrayWeapon = new ArrayList<>();
+        dbHelper.selectData(db,arrayWeapon);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arrayWeapon);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));*/
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         return view;
     }
 }

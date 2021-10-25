@@ -18,7 +18,7 @@ public class AddFragment extends Fragment {
     private ValorantDBHelper dbHelper;
     private SQLiteDatabase db;
 
-    public void AddFragment(ValorantDBHelper dbHelper,SQLiteDatabase db){
+    public AddFragment(ValorantDBHelper dbHelper, SQLiteDatabase db) {
         this.dbHelper=dbHelper;
         this.db=db;
     }
@@ -30,11 +30,11 @@ public class AddFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_add, container, false);
-        dbHelper = new ValorantDBHelper(getContext());
-        db = dbHelper.getWritableDatabase();
         EditText edtText = (EditText) view.findViewById(R.id.NameWeapon);
         EditText Des = (EditText) view.findViewById(R.id.Details);
         Button btn = (Button) view.findViewById(R.id.btn_add);
+
+        Button Delete = (Button) view.findViewById(R.id.formateW);
         btn.setOnClickListener(new View.OnClickListener() {
             /* we add an event on click ,it will work only when we click on botton */
             @Override
@@ -44,6 +44,16 @@ public class AddFragment extends Fragment {
                 String Details = Des.getText().toString();
                 Weapon c =new Weapon(Name,Details);
                 dbHelper.insertContact(db, c);
+                edtText.setText("");
+                Des.setText("");
+
+            }    });
+        Delete.setOnClickListener(new View.OnClickListener() {
+            /* we add an event on click ,it will work only when we click on botton */
+            @Override
+            public void onClick(View v) {
+
+                dbHelper.DeleteTable(db);
                 edtText.setText("");
                 Des.setText("");
 

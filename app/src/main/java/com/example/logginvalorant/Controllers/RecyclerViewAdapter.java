@@ -33,6 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaNom.setText(arrayWeapon.get(position).getNom());
+        holder.etiquetaDes.setText(arrayWeapon.get(position).getDtl());
     }
 
     @Override
@@ -42,10 +43,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
-
+        TextView etiquetaDes;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.userName);
+            etiquetaDes = itemView.findViewById(R.id.DesCamp);
         }
     }
 }
