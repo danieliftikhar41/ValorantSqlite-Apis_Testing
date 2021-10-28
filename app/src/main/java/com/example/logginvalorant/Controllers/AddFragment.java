@@ -1,5 +1,7 @@
 package com.example.logginvalorant.Controllers;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.logginvalorant.DB.ValorantContract;
 import com.example.logginvalorant.DB.ValorantDBHelper;
@@ -44,18 +47,36 @@ public class AddFragment extends Fragment {
                 String Details = Des.getText().toString();
                 Weapon c =new Weapon(Name,Details);
                 dbHelper.insertContact(db, c);
+
+                Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
+
                 edtText.setText("");
                 Des.setText("");
 
             }    });
+
+
         Delete.setOnClickListener(new View.OnClickListener() {
             /* we add an event on click ,it will work only when we click on botton */
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Are you sure!");
+                builder.setMessage("Do you want to formate ")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dbHelper.DeleteTable(db);
 
-                dbHelper.DeleteTable(db);
-                edtText.setText("");
-                Des.setText("");
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
 
             }    });
         return view;
