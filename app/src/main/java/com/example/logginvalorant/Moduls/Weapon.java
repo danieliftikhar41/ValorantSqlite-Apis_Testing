@@ -3,8 +3,7 @@ package com.example.logginvalorant.Moduls;
 public class Weapon {
     private String nom;
     private String details;
-    public Weapon(String nom,String details) {
-        this.details=details;
+    public Weapon(String nom) {
         this.nom = nom;
     }
 

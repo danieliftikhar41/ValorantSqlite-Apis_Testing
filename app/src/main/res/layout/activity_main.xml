@@ -6,68 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="165dp"
-        android:layout_height="390dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/Usertxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:srcCompat="@drawable/riot" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="185dp"
-        android:layout_height="205dp"
-        app:layout_constraintBottom_toTopOf="@+id/Usertxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.504"
-        app:srcCompat="@drawable/valorant" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="129dp"
-        android:layout_height="230dp"
-        app:layout_constraintBottom_toTopOf="@+id/Usertxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.028"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.51"
-        app:srcCompat="@drawable/jett" />
-
     <EditText
         android:id="@+id/Usertxt"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="328dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/custom_input"
-        android:drawableStart="@drawable/custom_user_icon"
 
+        android:drawableStart="@drawable/custom_user_icon"
         android:drawablePadding="12dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
+        android:padding="10dp"
         android:text="admin"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/Pwdtxt"
         android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/custom_pass_icon"
@@ -75,8 +40,10 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:padding="10dp"
         android:text="admin"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Usertxt" />
 
@@ -91,10 +58,21 @@
         android:text="Sign In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Pwdtxt"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.04" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="336dp"
+        android:layout_height="281dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logovalorant" />
 
 
 </android.support.constraint.ConstraintLayout>

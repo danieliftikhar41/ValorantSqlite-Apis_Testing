@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import com.example.logginvalorant.Moduls.Weapon;
+import com.example.logginvalorant.Moduls.Map;
+
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-    private ArrayList<Weapon> arrayWeapon;
+public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
+    private ArrayList<Map> arrayMap;
 
-    public RecyclerViewAdapter(ArrayList<Weapon> arrW){
-        arrayWeapon = arrW;
+    public MapAdaptor(ArrayList<Map> arrW){
+        arrayMap = arrW;
     }
 
     @NonNull
@@ -32,13 +33,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.etiquetaNom.setText(arrayWeapon.get(position).getNom());
+        holder.etiquetaNom.setText(arrayMap.get(position).getName());
 
     }
 
     @Override
     public int getItemCount() {
-        return arrayWeapon.size();
+        return arrayMap.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

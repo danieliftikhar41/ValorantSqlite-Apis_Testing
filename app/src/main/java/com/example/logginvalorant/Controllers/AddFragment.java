@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.logginvalorant.DB.ValorantContract;
 import com.example.logginvalorant.DB.ValorantDBHelper;
 import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.R;
+
+import java.util.ArrayList;
 
 public class AddFragment extends Fragment {
     private ValorantDBHelper dbHelper;
@@ -32,26 +34,48 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        ArrayList<String> ContentValue=new ArrayList<String>();
+        ContentValue.add("Agent");
+        ContentValue.add("Map");
+        ContentValue.add("Weapon");
+        ArrayList<String> WeaponValue=new ArrayList<String>();
+        WeaponValue.add("Sidearm");
+        WeaponValue.add("SMG");
+        WeaponValue.add("Shotgun");
+        WeaponValue.add("Rifle");
+        WeaponValue.add("Sniper");
+        WeaponValue.add("Heavy");
         View view= inflater.inflate(R.layout.fragment_add, container, false);
-        EditText edtText = (EditText) view.findViewById(R.id.NameWeapon);
-        EditText Des = (EditText) view.findViewById(R.id.Details);
+        EditText name = (EditText) view.findViewById(R.id.Name);
         Button btn = (Button) view.findViewById(R.id.btn_add);
-
+        Spinner Content=(Spinner) view.findViewById(R.id.Content);
+        Spinner WeaponType=(Spinner) view.findViewById(R.id.WeaponType);
+        EditText cost = (EditText) view.findViewById(R.id.Cost);
         Button Delete = (Button) view.findViewById(R.id.formateW);
+        name.setEnabled(false);
+        btn.setEnabled(false);
+        Delete.setEnabled(false);
+        WeaponType.setEnabled(false);
+        cost.setEnabled(false);
+
+
+
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             /* we add an event on click ,it will work only when we click on botton */
             @Override
             public void onClick(View v) {
 
-                String Name = edtText.getText().toString();
-                String Details = Des.getText().toString();
-                Weapon c =new Weapon(Name,Details);
+                String Name = name.getText().toString();
+
+                Weapon c =new Weapon(Name);
                 dbHelper.insertContact(db, c);
 
                 Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
 
-                edtText.setText("");
-                Des.setText("");
+                name.setText("");
+
 
             }    });
 
