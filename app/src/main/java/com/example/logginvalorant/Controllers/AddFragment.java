@@ -47,6 +47,25 @@ public class AddFragment extends Fragment {
         Spinner WeaponType=(Spinner) view.findViewById(R.id.WeaponType);
         EditText cost = (EditText) view.findViewById(R.id.Cost);
         Button Delete = (Button) view.findViewById(R.id.formateW);
+        Button Upload = (Button) view.findViewById(R.id.UploadImage);
+        Upload.setOnClickListener(new View.OnClickListener() {
+            /* we add an event on click ,it will work only when we click on botton */
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("not implamented!");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                        });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+
+            }    });
+
         name.setEnabled(false);
         btn.setEnabled(false);
         Delete.setEnabled(false);
