@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 
 import com.example.logginvalorant.Moduls.Agent;
-import com.example.logginvalorant.Moduls.Map;
 
 import com.example.logginvalorant.R;
 
@@ -25,7 +24,7 @@ public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.agent_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -45,11 +44,11 @@ public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
-        TextView etiquetaDes;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            etiquetaNom = itemView.findViewById(R.id.userName);
-            etiquetaDes = itemView.findViewById(R.id.DesCamp);
+            etiquetaNom = itemView.findViewById(R.id.userNameagent);
+
         }
     }
 }

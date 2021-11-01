@@ -37,7 +37,7 @@ public class WeaponFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_weapon, container, false);
         ArrayList<Weapon> arrayWeapon = new ArrayList<>();
-        dbHelper.selectData(db,arrayWeapon);
+        dbHelper.selectData_Weapon(db,arrayWeapon);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(arrayWeapon);
         recyclerView.setAdapter(adapter);

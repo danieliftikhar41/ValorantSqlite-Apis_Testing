@@ -23,7 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.weapon_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -32,7 +32,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.etiquetaNom.setText(arrayWeapon.get(position).getNom());
+        holder.etiquetaNom.setText(arrayWeapon.get(position).getName());
+        holder.etiquetacost.setText(arrayWeapon.get(position).getCost());
+        holder.etiquetaType.setText(arrayWeapon.get(position).getType());
 
     }
 
@@ -43,11 +45,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
-        TextView etiquetaDes;
+        TextView etiquetacost;
+        TextView etiquetaType;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            etiquetaNom = itemView.findViewById(R.id.userName);
-            etiquetaDes = itemView.findViewById(R.id.DesCamp);
+            etiquetaNom = itemView.findViewById(R.id.userNameWeapon);
+            etiquetacost = itemView.findViewById(R.id.costid);
+            etiquetaType = itemView.findViewById(R.id.weapontipo);
+
+
         }
     }
 }

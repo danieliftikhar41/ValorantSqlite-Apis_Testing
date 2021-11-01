@@ -24,7 +24,7 @@ public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.map_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -47,8 +47,8 @@ public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
         TextView etiquetaDes;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            etiquetaNom = itemView.findViewById(R.id.userName);
-            etiquetaDes = itemView.findViewById(R.id.DesCamp);
+            etiquetaNom = itemView.findViewById(R.id.userNamemap);
+
         }
     }
 }

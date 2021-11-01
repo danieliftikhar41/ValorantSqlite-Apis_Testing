@@ -8,13 +8,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.logginvalorant.DB.ValorantDBHelper;
+import com.example.logginvalorant.Moduls.Agent;
 import com.example.logginvalorant.Moduls.Weapon;
+import com.example.logginvalorant.Moduls.Map;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
@@ -34,17 +38,8 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ArrayList<String> ContentValue=new ArrayList<String>();
-        ContentValue.add("Agent");
-        ContentValue.add("Map");
-        ContentValue.add("Weapon");
-        ArrayList<String> WeaponValue=new ArrayList<String>();
-        WeaponValue.add("Sidearm");
-        WeaponValue.add("SMG");
-        WeaponValue.add("Shotgun");
-        WeaponValue.add("Rifle");
-        WeaponValue.add("Sniper");
-        WeaponValue.add("Heavy");
+        String[] ContentValue={"Content","Agent","Weapon","Map"};
+        String[] WeaponValue={"Weapons Type","Sidearm","SMG","Shotgun","Rifle","Sniper","Heavy"};
         View view= inflater.inflate(R.layout.fragment_add, container, false);
         EditText name = (EditText) view.findViewById(R.id.Name);
         Button btn = (Button) view.findViewById(R.id.btn_add);
@@ -58,51 +53,169 @@ public class AddFragment extends Fragment {
         WeaponType.setEnabled(false);
         cost.setEnabled(false);
 
-
-
-
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            /* we add an event on click ,it will work only when we click on botton */
+        ArrayAdapter<String> Contentadaptor=new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,ContentValue);
+        Content.setAdapter(Contentadaptor);
+        ArrayAdapter<String> Weaponadaptor=new ArrayAdapter<String>(getContext(),android.R.layout.simple_spinner_dropdown_item,WeaponValue);
+        WeaponType.setAdapter(Weaponadaptor);
+        Content.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String SelectContent=Content.getSelectedItem().toString();
+                if(SelectContent.equals("Agent")){
+                    name.setEnabled(true);
+                    btn.setEnabled(true);
+                    Delete.setEnabled(true);
+                    WeaponType.setEnabled(false);
+                    cost.setEnabled(false);
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+                            String Name = name.getText().toString();
+                            Agent c =new Agent(Name);
+                            dbHelper.insertAgent(db, c);
+                            Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
+                            name.setText("");
+                        }});
+                    Delete.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle("Are you sure!");
+                            builder.setMessage("Do you want to formate ")
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dbHelper.DeleteTable(db,SelectContent);
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
 
-                String Name = name.getText().toString();
-
-                Weapon c =new Weapon(Name);
-                dbHelper.insertContact(db, c);
-
-                Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
-
-                name.setText("");
+                                        }
+                                    });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
 
 
-            }    });
+                        }    });
+
+                }else if(SelectContent.equals("Weapon")){
+                    name.setEnabled(true);
+                    btn.setEnabled(true);
+                    Delete.setEnabled(true);
+                    WeaponType.setEnabled(true);
+                    cost.setEnabled(true);
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+
+                            String Name = name.getText().toString();
+                            String wt = WeaponType.getSelectedItem().toString();
+                            String  Cost= cost.getText().toString();
+
+                            Weapon c =new Weapon(Name,wt,Cost);
+                            dbHelper.insertWeapon(db, c);
+
+                            Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
+
+                            name.setText("");
 
 
-        Delete.setOnClickListener(new View.OnClickListener() {
-            /* we add an event on click ,it will work only when we click on botton */
+                        }    });
+
+                    Delete.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle("Are you sure!");
+                            builder.setMessage("Do you want to formate ")
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dbHelper.DeleteTable(db,SelectContent);
+
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+
+                                        }
+                                    });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+
+                        }    });
+                }else if(SelectContent.equals("Map")){
+                    name.setEnabled(true);
+                    btn.setEnabled(true);
+                    Delete.setEnabled(true);
+                    WeaponType.setEnabled(false);
+                    cost.setEnabled(false);
+                    btn.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+
+                            String Name = name.getText().toString();
+
+                            Map c =new Map(Name);
+                            dbHelper.insertMap(db, c);
+
+                            Toast.makeText(getContext(), "Added!", Toast.LENGTH_LONG).show();
+
+                            name.setText("");
+
+
+                        }    });
+
+
+                    Delete.setOnClickListener(new View.OnClickListener() {
+                        /* we add an event on click ,it will work only when we click on botton */
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setTitle("Are you sure!");
+                            builder.setMessage("Do you want to formate ")
+                                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dbHelper.DeleteTable(db,SelectContent);
+
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+
+                                        }
+                                    });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+
+
+                        }    });
+                }else{
+                    name.setEnabled(false);
+                    btn.setEnabled(false);
+                    Delete.setEnabled(false);
+                    WeaponType.setEnabled(false);
+                    cost.setEnabled(false);
+                    Toast.makeText(getContext(),"Plz select Content: ",Toast.LENGTH_LONG).show();
+                }
+
+            }
+
             @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setTitle("Are you sure!");
-                builder.setMessage("Do you want to formate ")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dbHelper.DeleteTable(db);
+            public void onNothingSelected(AdapterView<?> parentView) {
+                String SelectContent=Content.getSelectedItem().toString();
+                Toast.makeText(getContext(),"Valor: "+SelectContent,Toast.LENGTH_LONG);
+            }
 
-                            }
-                        })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-
-                            }
-                        });
-                AlertDialog dialog = builder.create();
-                dialog.show();
+        });
 
 
-            }    });
         return view;
     }
+
 }

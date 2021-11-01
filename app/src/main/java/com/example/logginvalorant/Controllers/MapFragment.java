@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.logginvalorant.DB.ValorantDBHelper;
+import com.example.logginvalorant.Moduls.Map;
+import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
@@ -28,21 +30,13 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view= inflater.inflate(R.layout.fragment_map, container, false);
-        /*ArrayList<String> array_noms = new ArrayList<String>();
-
-        array_noms.add("Map1");
-        array_noms.add("Map2");
-        array_noms.add("Map3");
-        array_noms.add("Map4");
-        array_noms.add("Map5");
-        array_noms.add("Map6");
-        array_noms.add("Map7");
-
+        ArrayList<Map> arrayMap = new ArrayList<>();
+        dbHelper.selectData_Map(db,arrayMap);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(array_noms);
+        MapAdaptor adapter = new MapAdaptor(arrayMap);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));*/
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         return view;
 
     }
