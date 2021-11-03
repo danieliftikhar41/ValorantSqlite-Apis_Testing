@@ -38,7 +38,7 @@ public class AddFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        String[] ContentValue={"Content","Agent","Weapon","Map"};
+        String[] ContentValue={"Content","Agent","Weapons","Map"};
         String[] WeaponValue={"Weapons Type","Sidearm","SMG","Shotgun","Rifle","Sniper","Heavy"};
         View view= inflater.inflate(R.layout.fragment_add, container, false);
         EditText name = (EditText) view.findViewById(R.id.Name);
@@ -102,7 +102,7 @@ public class AddFragment extends Fragment {
                         public void onClick(View v) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             builder.setTitle("Are you sure!");
-                            builder.setMessage("Do you want to formate ")
+                            builder.setMessage("Do you want to formate data from table "+SelectContent)
                                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dbHelper.DeleteTable(db,SelectContent);
@@ -150,7 +150,7 @@ public class AddFragment extends Fragment {
                         public void onClick(View v) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             builder.setTitle("Are you sure!");
-                            builder.setMessage("Do you want to formate ")
+                            builder.setMessage("Do you want to formate data from table "+SelectContent)
                                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dbHelper.DeleteTable(db,SelectContent);
@@ -197,7 +197,7 @@ public class AddFragment extends Fragment {
                         public void onClick(View v) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                             builder.setTitle("Are you sure!");
-                            builder.setMessage("Do you want to formate ")
+                            builder.setMessage("Do you want to formate data from table "+SelectContent)
                                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dbHelper.DeleteTable(db,SelectContent);

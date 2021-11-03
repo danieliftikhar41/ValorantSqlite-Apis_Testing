@@ -10,4 +10,5 @@
     <color name="gray">#BDBCBC</color>
     <color name="orange">#FF5722</color>
     <color name="red">#FF0000</color>
+    <color name="darkgray">#323232</color>
 </resources>
