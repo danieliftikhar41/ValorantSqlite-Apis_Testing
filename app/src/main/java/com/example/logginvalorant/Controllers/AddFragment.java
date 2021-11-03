@@ -119,7 +119,7 @@ public class AddFragment extends Fragment {
 
                         }    });
 
-                }else if(SelectContent.equals("Weapon")){
+                }else if(SelectContent.equals("Weapons")){
                     name.setEnabled(true);
                     btn.setEnabled(true);
                     Delete.setEnabled(true);
