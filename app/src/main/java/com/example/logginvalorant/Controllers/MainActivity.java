@@ -1,6 +1,8 @@
 package com.example.logginvalorant.Controllers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,15 +19,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SystemClock.sleep(1000);
         setTheme(R.style.Theme_Valorant);
-
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs= getSharedPreferences("cache", Context.MODE_PRIVATE);
+        SharedPreferences.Editor Editor=prefs.edit();
+        Boolean login = prefs.getBoolean("login",false);
+        Intent Redrict= new Intent(this, MainMenu.class);
+
+        if(login){
+            startActivity(Redrict);
+        }else{
+
         setContentView(R.layout.activity_main);
+
+
         Button btn = (Button) findViewById(R.id.Btn);
         EditText edtText = (EditText) findViewById(R.id.Usertxt);
         EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
 
         /*we use Intent to redricte to another page */
-        Intent Redrict= new Intent(this, MainMenu.class);
+
         btn.setOnClickListener(new View.OnClickListener() {
             /* we add an event on click ,it will work only when we click on botton */
             @Override
@@ -33,8 +45,15 @@ public class MainActivity extends AppCompatActivity {
                 /* here we get information from input */
                 String name = edtText.getText().toString();
                 String pass = edtpass.getText().toString();
+
                 /*we are comparing if user is valid or not */
                 if(name.equals("admin") && pass.equals("admin")){
+
+                    Editor.putString("user", name);
+                    Editor.putBoolean("login", true);
+                    Editor.commit();
+                    Boolean login1 = prefs.getBoolean("login",false);
+                    Log.i("log1","on click "+login1);
                     startActivity(Redrict);
 
                     Log.i("Login","you are inside");
@@ -44,5 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
     );
 
-    }
+
 }
+}}
