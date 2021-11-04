@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class ValorantDBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "valorant3.db";
+    public static final String DATABASE_NAME = "valorant.db";
     private static final String SQL_CREATE_ENTRIES1 = "CREATE TABLE " + ValorantEntry.TABLE_Agent + "(" + ValorantEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ValorantEntry.COLUMN_NAME_TITLE + " TEXT)";
     private static final String SQL_CREATE_ENTRIES2 = "CREATE TABLE " + ValorantEntry.TABLE_Weapon + "(" + ValorantEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ValorantEntry.COLUMN_NAME_TITLE + " TEXT, "+ValorantEntry.COLUMN_WeaponType_TITLE + " TEXT ,"+ValorantEntry.COLUMN_Cost_TITLE + " TEXT)";
     private static final String SQL_CREATE_ENTRIES3 = "CREATE TABLE " + ValorantEntry.TABLE_Map + "(" + ValorantEntry.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + ValorantEntry.COLUMN_NAME_TITLE + " TEXT)";

@@ -28,41 +28,30 @@ public class MainActivity extends AppCompatActivity {
         if(login){
             startActivity(Redrict);
         }else{
+            setContentView(R.layout.activity_main);
+            Button btn = (Button) findViewById(R.id.Btn);
+            EditText edtText = (EditText) findViewById(R.id.Usertxt);
+            EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
+            /*we use Intent to redricte to another page */
+            btn.setOnClickListener(new View.OnClickListener() {
+                /* we add an event on click ,it will work only when we click on botton */
+                @Override
+                public void onClick(View v) {
+                    /* here we get information from input */
+                    String name = edtText.getText().toString();
+                    String pass = edtpass.getText().toString();
 
-        setContentView(R.layout.activity_main);
+                    /*we are comparing if user is valid or not */
+                    if(name.equals("admin") && pass.equals("admin")){
 
-
-        Button btn = (Button) findViewById(R.id.Btn);
-        EditText edtText = (EditText) findViewById(R.id.Usertxt);
-        EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
-
-        /*we use Intent to redricte to another page */
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            /* we add an event on click ,it will work only when we click on botton */
-            @Override
-            public void onClick(View v) {
-                /* here we get information from input */
-                String name = edtText.getText().toString();
-                String pass = edtpass.getText().toString();
-
-                /*we are comparing if user is valid or not */
-                if(name.equals("admin") && pass.equals("admin")){
-
-                    Editor.putString("user", name);
-                    Editor.putBoolean("login", true);
-                    Editor.commit();
-                    Boolean login1 = prefs.getBoolean("login",false);
-                    Log.i("log1","on click "+login1);
-                    startActivity(Redrict);
-
-                    Log.i("Login","you are inside");
+                        Editor.putString("user", name);
+                        Editor.putBoolean("login", true);
+                        Editor.commit();
+                        startActivity(Redrict);
+                        Log.i("Login","you are inside");
+                    }
                 }
-            }}
-
-
-    );
-
-
+            });
+        }
+    }
 }
-}}
