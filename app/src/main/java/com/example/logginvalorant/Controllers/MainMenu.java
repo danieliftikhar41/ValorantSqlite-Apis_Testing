@@ -42,6 +42,11 @@ public class MainMenu extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
             return true;
         });
+    }
 
-    }}
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
+    }
+}
 
