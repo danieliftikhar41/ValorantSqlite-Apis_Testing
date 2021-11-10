@@ -3,9 +3,13 @@ package com.example.logginvalorant.Controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,12 +17,15 @@ import android.widget.EditText;
 
 import com.example.logginvalorant.R;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SystemClock.sleep(1000);
         setTheme(R.style.Theme_Valorant);
+
         super.onCreate(savedInstanceState);
         SharedPreferences prefs= getSharedPreferences("cache", Context.MODE_PRIVATE);
         SharedPreferences.Editor Editor=prefs.edit();
@@ -53,5 +60,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    private void setAppLocale(String localeCode){
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration config = res.getConfiguration();
+
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.JELLY_BEAN_MR1){
+            config.setLocale(new Locale(localeCode.toLowerCase()));
+        } else {
+            config.locale = new Locale(localeCode.toLowerCase());
+        }
+        res.updateConfiguration(config, dm);
     }
 }

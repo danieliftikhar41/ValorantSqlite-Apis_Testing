@@ -2,5 +2,18 @@
 <resources>
     <string name="app_name">loggin Valorant</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Name">Nombre</string>
+    <string name="Cost">Coste</string>
+    <string name="Weapons">Armas</string>
+    <string name="Agents">Agentes</string>
+    <string name="Add">Añadir</string>
+    <string name="Upload">Subir Img</string>
+    <string name="Formate">Formatear</string>
+    <string name="Login">Inciar Session</string>
+    <string name="Username">Nombre de Usuario</string>
+    <string name="Password">Contraseña</string>
+    <string name="Content">Contenido</string>
+    <string name="Type">Tipo</string>
+    <string name="Map">Mapas</string>
+
 </resources>
