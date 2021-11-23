@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/layout/activity_lista.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/layout/activity_main_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/layout/agent_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/layout/fragment_add.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ValorantSqlite-Apis_Testing/app/src/main/res/menu/bottom_navigation.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/User/AndroidStudioProjects/logginValorant/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/User/AndroidStudioProjects/logginValorant/app/src/main/res/drawable/bgitem.xml" value="0.1" />
         <entry key="..\:/Users/User/AndroidStudioProjects/logginValorant/app/src/main/res/drawable/button.xml" value="0.1414715719063545" />
