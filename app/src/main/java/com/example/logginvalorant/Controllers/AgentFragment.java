@@ -2,17 +2,16 @@ package com.example.logginvalorant.Controllers;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.logginvalorant.DB.ValorantDBHelper;
 import com.example.logginvalorant.Moduls.Agent;
-import com.example.logginvalorant.Moduls.Map;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +20,6 @@ import com.example.logginvalorant.Moduls.Agent;
 import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.Moduls.Map;
 import com.example.logginvalorant.R;
-
-import java.util.ArrayList;
 
 public class AddFragment extends Fragment {
     private ValorantDBHelper dbHelper;
