@@ -1,6 +1,8 @@
 package com.example.logginvalorant.Controllers;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +18,10 @@ import java.util.ArrayList;
 
 public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> {
     private ArrayList<Agent> arrayAgent;
-
-    public AgentAdaptor(ArrayList<Agent> arrW){
+    private SelectListner lisnter;
+    public AgentAdaptor(ArrayList<Agent> arrW,SelectListner lisnter){
         arrayAgent = arrW;
+        this.lisnter=lisnter;
     }
 
     @NonNull
@@ -34,7 +37,12 @@ public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaNom.setText(arrayAgent.get(position).getName());
-
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lisnter.onItemClicked(arrayAgent.get(position));
+            }
+        });
     }
 
     @Override
@@ -44,11 +52,11 @@ public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
-
+        ConstraintLayout container;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.userNameagent);
-
+            container=itemView.findViewById(R.id.main_container_agent);
         }
     }
 }

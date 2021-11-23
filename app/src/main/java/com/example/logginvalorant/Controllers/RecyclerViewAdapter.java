@@ -1,6 +1,7 @@
 package com.example.logginvalorant.Controllers;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,13 @@ import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private ArrayList<Weapon> arrayWeapon;
+
 
     public RecyclerViewAdapter(ArrayList<Weapon> arrW){
         arrayWeapon = arrW;
+
     }
 
     @NonNull
@@ -25,6 +28,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.weapon_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
+
         return holder;
     }
 
@@ -43,15 +47,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return arrayWeapon.size();
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
         TextView etiquetacost;
         TextView etiquetaType;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.userNameWeapon);
             etiquetacost = itemView.findViewById(R.id.costid);
             etiquetaType = itemView.findViewById(R.id.weapontipo);
+
 
 
         }

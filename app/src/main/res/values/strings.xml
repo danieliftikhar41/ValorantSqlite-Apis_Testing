@@ -14,5 +14,7 @@
     <string name="Content">Content</string>
     <string name="Type">Type</string>
     <string name="Map">Map</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

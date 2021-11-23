@@ -1,6 +1,8 @@
 package com.example.logginvalorant.Moduls;
 
-public class Agent {
+import java.io.Serializable;
+
+public class Agent implements Serializable {
     private String name;
 
     public Agent(String name) {

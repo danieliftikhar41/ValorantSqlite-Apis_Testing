@@ -1,6 +1,8 @@
 package com.example.logginvalorant.Moduls;
 
-public class Map {
+import java.io.Serializable;
+
+public class Map implements Serializable {
     private String name;
 
     public Map(String name) {

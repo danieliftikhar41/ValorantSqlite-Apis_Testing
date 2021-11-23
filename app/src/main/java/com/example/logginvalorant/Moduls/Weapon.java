@@ -1,6 +1,8 @@
 package com.example.logginvalorant.Moduls;
 
-public class Weapon {
+import java.io.Serializable;
+
+public class Weapon implements Serializable {
     private String name;
     private String type;
     private String cost;
