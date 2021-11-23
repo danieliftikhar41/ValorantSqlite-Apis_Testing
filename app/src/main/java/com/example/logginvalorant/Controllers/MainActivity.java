@@ -7,7 +7,12 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.SystemClock;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -18,13 +23,17 @@ import android.widget.EditText;
 import com.example.logginvalorant.R;
 
 import java.util.Locale;
+import java.util.concurrent.Executor;
 
 public class MainActivity extends AppCompatActivity {
-
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SystemClock.sleep(1000);
         setTheme(R.style.Theme_Valorant);
+
 
         super.onCreate(savedInstanceState);
         SharedPreferences prefs= getSharedPreferences("cache", Context.MODE_PRIVATE);
@@ -32,13 +41,48 @@ public class MainActivity extends AppCompatActivity {
         Boolean login = prefs.getBoolean("login",false);
         Intent Redrict= new Intent(this, MainMenu.class);
 
+
+
         if(login){
+            Editor.clear().commit();
+
             startActivity(Redrict);
         }else{
             setContentView(R.layout.activity_main);
             Button btn = (Button) findViewById(R.id.Btn);
             EditText edtText = (EditText) findViewById(R.id.Usertxt);
             EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
+            executor = ContextCompat.getMainExecutor(this);
+            biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                    super.onAuthenticationError(errorCode, errString);
+                    //Error
+                }
+
+                @Override
+                public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                    super.onAuthenticationSucceeded(result);
+                    String name = edtText.getText().toString();
+                    String pass = edtpass.getText().toString();
+                    Editor.putString("user", name);
+                    Editor.putBoolean("login", true);
+                    Editor.commit();
+                    startActivity(Redrict);
+                }
+
+                @Override
+                public void onAuthenticationFailed() {
+                    super.onAuthenticationFailed();
+
+                }
+            });
+            promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                    .setTitle("Biometric login for my app")
+                    .setSubtitle("Log in using your biometric credential")
+                    .setNegativeButtonText("Use account password")
+                    .build();
+            biometricPrompt.authenticate(promptInfo);
             /*we use Intent to redricte to another page */
             btn.setOnClickListener(new View.OnClickListener() {
                 /* we add an event on click ,it will work only when we click on botton */
