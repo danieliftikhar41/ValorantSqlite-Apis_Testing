@@ -7,18 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.logginvalorant.Moduls.Agent;
 import com.example.logginvalorant.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Detaills#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Detaills extends Fragment {
+
+public class AgentDetaills extends Fragment {
 
 
-    public Detaills() {
+    public AgentDetaills() {
         // Required empty public constructor
     }
 
@@ -27,7 +25,12 @@ public class Detaills extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_detaills, container, false);
+        View view=inflater.inflate(R.layout.fragment_detaillsagent, container, false);
+        Bundle bundle = getArguments();
+        TextView Name = (TextView) view.findViewById(R.id.Namedetaill);
+        Agent agent = (Agent) bundle.getSerializable("Agent");
+
+        Name.setText(agent.getName());
         return view;
 
     }

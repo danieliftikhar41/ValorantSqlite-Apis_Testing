@@ -22,6 +22,7 @@ public class MainMenu extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         BottomNavigationView bottomNav = findViewById(R.id.main_menu);
+        //Bottom Menu on Switch change fragment
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AgentFragment(dbHelper, db)).commit();
         bottomNav.setOnNavigationItemSelectedListener(item -> {
                     Fragment selectedFragment = null;

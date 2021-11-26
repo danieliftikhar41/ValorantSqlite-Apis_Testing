@@ -37,6 +37,7 @@ public class AgentAdaptor extends RecyclerView.Adapter<AgentAdaptor.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaNom.setText(arrayAgent.get(position).getName());
+        //Making Container clickAble
         holder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

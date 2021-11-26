@@ -2,6 +2,7 @@ package com.example.logginvalorant.Controllers;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,11 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
     private ArrayList<Weapon> arrayWeapon;
 
+    private SelectListner lisnter;
 
-    public RecyclerViewAdapter(ArrayList<Weapon> arrW){
+    public RecyclerViewAdapter(ArrayList<Weapon> arrW,SelectListner ltn){
         arrayWeapon = arrW;
-
+        this.lisnter=ltn;
     }
 
     @NonNull
@@ -40,6 +42,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.etiquetacost.setText(arrayWeapon.get(position).getCost());
         holder.etiquetaType.setText(arrayWeapon.get(position).getType());
 
+        //Making Container clickAble
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lisnter.onItemClicked(arrayWeapon.get(position));
+            }
+        });
     }
 
     @Override
@@ -53,13 +62,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView etiquetaNom;
         TextView etiquetacost;
         TextView etiquetaType;
-
+        ConstraintLayout container;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.userNameWeapon);
             etiquetacost = itemView.findViewById(R.id.costid);
             etiquetaType = itemView.findViewById(R.id.weapontipo);
-
+            container=itemView.findViewById(R.id.weapon_container);
 
 
         }

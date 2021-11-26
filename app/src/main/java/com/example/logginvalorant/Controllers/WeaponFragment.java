@@ -9,15 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.logginvalorant.DB.ValorantDBHelper;
+import com.example.logginvalorant.Moduls.Agent;
+import com.example.logginvalorant.Moduls.Map;
 import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
 
 
-public class WeaponFragment extends Fragment {
+public class WeaponFragment extends Fragment implements SelectListner {
     private ValorantDBHelper dbHelper;
     private SQLiteDatabase db;
 
@@ -38,10 +41,31 @@ public class WeaponFragment extends Fragment {
         ArrayList<Weapon> arrayWeapon = new ArrayList<>();
         dbHelper.selectData_Weapon(db,arrayWeapon);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(arrayWeapon);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(arrayWeapon,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         return view;
+    }
+    @Override
+    public void onItemClicked(Agent agent) {
+
+    }
+
+    @Override
+    public void onItemClicked(Map map) {
+
+    }
+
+    @Override
+    public void onItemClicked(Weapon weapon) {
+        Bundle bundle = new Bundle();
+        //transfer Data Via bundle after on click fucntion that we used in Adaptor
+        bundle.putSerializable("Weapon", weapon);
+        WeaponDetails weapons= new WeaponDetails();
+        weapons.setArguments(bundle);
+
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, weapons).commit();
+
     }
 }

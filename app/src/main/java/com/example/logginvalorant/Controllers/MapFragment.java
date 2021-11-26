@@ -11,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.logginvalorant.DB.ValorantDBHelper;
+import com.example.logginvalorant.Moduls.Agent;
 import com.example.logginvalorant.Moduls.Map;
+import com.example.logginvalorant.Moduls.Weapon;
 import com.example.logginvalorant.R;
 
 import java.util.ArrayList;
 
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements SelectListner{
     private ValorantDBHelper dbHelper;
     private SQLiteDatabase db;
     public MapFragment(ValorantDBHelper dbHelper, SQLiteDatabase db) {
@@ -32,11 +34,33 @@ public class MapFragment extends Fragment {
         ArrayList<Map> arrayMap = new ArrayList<>();
         dbHelper.selectData_Map(db,arrayMap);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        MapAdaptor adapter = new MapAdaptor(arrayMap);
+        MapAdaptor adapter = new MapAdaptor(arrayMap,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager((getContext())));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         return view;
+
+    }
+    @Override
+    public void onItemClicked(Agent agent) {
+
+    }
+
+    @Override
+    public void onItemClicked(Map map) {
+        //transfer Data Via bundle after on click fucntion that we used in Adaptor
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Map", map);
+        MapDetails details= new MapDetails();
+        details.setArguments(bundle);
+
+        getFragmentManager().beginTransaction().replace(R.id.fragment_container, details).commit();
+
+    }
+
+    @Override
+    public void onItemClicked(Weapon weapon) {
+
 
     }
 }

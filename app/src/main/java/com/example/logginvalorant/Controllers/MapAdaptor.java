@@ -1,6 +1,7 @@
 package com.example.logginvalorant.Controllers;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,10 @@ import java.util.ArrayList;
 
 public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
     private ArrayList<Map> arrayMap;
-
-    public MapAdaptor(ArrayList<Map> arrW){
+    private SelectListner lisnter;
+    public MapAdaptor(ArrayList<Map> arrW,SelectListner ltn){
         arrayMap = arrW;
+        this.lisnter=ltn;
     }
 
     @NonNull
@@ -34,6 +36,13 @@ public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.etiquetaNom.setText(arrayMap.get(position).getName());
+        //Making Container clickAble
+        holder.container.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                lisnter.onItemClicked(arrayMap.get(position));
+            }
+        });
 
     }
 
@@ -44,11 +53,12 @@ public class MapAdaptor extends RecyclerView.Adapter<MapAdaptor.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView etiquetaNom;
-        TextView etiquetaDes;
+
+        ConstraintLayout container;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             etiquetaNom = itemView.findViewById(R.id.userNamemap);
-
+            container=itemView.findViewById(R.id.mapcontainer);
         }
     }
 }

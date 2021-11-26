@@ -36,22 +36,26 @@ public class MainActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+        //cache to save user login
         SharedPreferences prefs= getSharedPreferences("cache", Context.MODE_PRIVATE);
         SharedPreferences.Editor Editor=prefs.edit();
         Boolean login = prefs.getBoolean("login",false);
+        //cache to save user login
         Intent Redrict= new Intent(this, MainMenu.class);
 
 
-
+        //if its true it will go to Main Page in my case Menu with Agent fragment
         if(login){
-            Editor.clear().commit();
+            //Editor.clear().commit();
 
             startActivity(Redrict);
         }else{
+            //else it will ask to login
             setContentView(R.layout.activity_main);
             Button btn = (Button) findViewById(R.id.Btn);
             EditText edtText = (EditText) findViewById(R.id.Usertxt);
             EditText edtpass = (EditText) findViewById(R.id.Pwdtxt);
+            //Biomatic
             executor = ContextCompat.getMainExecutor(this);
             biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
                 @Override
@@ -65,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     super.onAuthenticationSucceeded(result);
                     String name = edtText.getText().toString();
                     String pass = edtpass.getText().toString();
+                    //here we storing data inside cache file
                     Editor.putString("user", name);
                     Editor.putBoolean("login", true);
                     Editor.commit();
@@ -83,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButtonText("Use account password")
                     .build();
             biometricPrompt.authenticate(promptInfo);
+            //Finish Biomatric
             /*we use Intent to redricte to another page */
             btn.setOnClickListener(new View.OnClickListener() {
                 /* we add an event on click ,it will work only when we click on botton */
@@ -94,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
                     /*we are comparing if user is valid or not */
                     if(name.equals("admin") && pass.equals("admin")){
-
+                        //here we storing data inside cache file
                         Editor.putString("user", name);
                         Editor.putBoolean("login", true);
                         Editor.commit();
@@ -105,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+    //this function is usefull if you want to switch application languaje (it will always get Same Langaje us your mobile internal languaje)
     private void setAppLocale(String localeCode){
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
