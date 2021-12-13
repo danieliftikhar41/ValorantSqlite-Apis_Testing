@@ -10,10 +10,20 @@
 
         <!-- Customize your theme here. -->
     </style>
+
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:windowBackground">@drawable/splash</item>
 
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Valorant.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Valorant.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Valorant.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

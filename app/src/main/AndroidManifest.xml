@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valorant">
         <activity
+            android:name=".push"
+            android:exported="true" />
+        <activity
             android:name=".Controllers.MainMenu"
             android:exported="true" />
         <activity
